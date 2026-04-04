@@ -6,6 +6,7 @@ interface ProjectItem {
   details: string[];
   stack: string[];
   iconUrl: string;
+  iconColor: string;
   repoUrl?: string;
 }
 
@@ -48,6 +49,7 @@ export class ProjectsSectionComponent {
         'Co-founded and built a n8n-like low-code workflow automation platform with a drag-and-drop interface for designing complex workflows and API integrations.',
       details: ['Architected and developed real-time features including live dashboards, chat, and collaborative workflow management.'],
       iconUrl: '/icons/project-workflow.svg',
+      iconColor: '#53c400',
       stack: ['Node.js', '.NET Core', 'React', 'TypeScript', 'Python', 'RabbitMQ', 'Redis', 'PostgreSQL', 'MongoDB', 'WebSocket'],
       repoUrl: 'https://github.com/originzero-io/originzero'
     },
@@ -59,6 +61,7 @@ export class ProjectsSectionComponent {
         'Developed backend services across multiple domains using DDD, Clean Architecture, and CQRS to keep the system scalable and maintainable'
       ],
       iconUrl: '/icons/project-logistics.svg',
+      iconColor: '#cf7d3b',
       stack: ['.NET Core', 'PostgreSQL', 'MSSQL', 'MongoDB', 'RabbitMQ', 'Redis', 'Docker', 'Azure DevOps']
     },
     {
@@ -69,6 +72,7 @@ export class ProjectsSectionComponent {
         'Built systems that interface directly with field devices and PLC units to collect, process, and visualize real-time manufacturing data.'
       ],
       iconUrl: '/icons/project-factory.svg',
+      iconColor: '#6fa0c9',
       stack: ['.NET Core', 'React', 'Node.js', 'Angular', 'MSSQL', 'PostgreSQL', 'RabbitMQ', 'Azure DevOps', 'WebSocket']
     },
     {
@@ -77,6 +81,7 @@ export class ProjectsSectionComponent {
         'Designed and deployed medium-scale ERP applications with full integration into Logo Software for streamlined business operations.',
       details: ['Automated complex industrial workflows, bridging shop floor data with corporate resource planning.'],
       iconUrl: '/icons/project-erp.svg',
+      iconColor: '#9b8dd6',
       stack: ['.NET Core', 'React', 'Angular', 'Node.js', 'MSSQL', 'PostgreSQL']
     },
     {
@@ -88,6 +93,7 @@ export class ProjectsSectionComponent {
         'Integrated various sensor types to provide a centralized, cloud-accessible interface for remote farm management.'
       ],
       iconUrl: '/icons/project-agri.svg',
+      iconColor: '#2f9f63',
       stack: ['.NET Core', 'React', 'PostgreSQL', 'WebSocket']
     }
   ];
@@ -98,7 +104,11 @@ export class ProjectsSectionComponent {
       return;
     }
 
-    const step = Math.max(track.clientWidth * 0.86, 320);
+    const firstCard = track.querySelector<HTMLElement>('.project-card');
+    const gapValue = getComputedStyle(track).columnGap || getComputedStyle(track).gap || '0px';
+    const gap = Number.parseFloat(gapValue) || 0;
+    const step = firstCard ? firstCard.getBoundingClientRect().width + gap : Math.max(track.clientWidth * 0.86, 320);
+
     track.scrollBy({
       left: direction === 'right' ? step : -step,
       behavior: 'smooth'
