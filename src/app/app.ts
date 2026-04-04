@@ -2,6 +2,7 @@ import { Component, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { SiteNavComponent } from './components/site-nav/site-nav.component';
 import { AboutSectionComponent } from './sections/about-section/about-section.component';
 import { ExpertiseSectionComponent } from './sections/expertise-section/expertise-section.component';
+import { FocusSectionComponent } from './sections/focus-section/focus-section.component';
 import { ProjectsSectionComponent } from './sections/projects-section/projects-section.component';
 
 @Component({
@@ -10,6 +11,7 @@ import { ProjectsSectionComponent } from './sections/projects-section/projects-s
     SiteNavComponent,
     AboutSectionComponent,
     ProjectsSectionComponent,
+    FocusSectionComponent,
     ExpertiseSectionComponent
   ],
   templateUrl: './app.html',

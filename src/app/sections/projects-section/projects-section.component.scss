@@ -2,17 +2,8 @@
   display: block;
 }
 
-.section-kicker {
-  margin: 0;
-  text-transform: uppercase;
-  font-size: 1.10rem;
-  letter-spacing: 0.1em;
-  color: color-mix(in srgb, var(--accent) 70%, var(--text-2));
-  text-align: center;
-}
-
 .section-description {
-  margin: 0.35rem auto 0.55rem;
+  margin: 0.5rem auto 0.55rem;
   max-width: 96ch;
   text-align: center;
   color: var(--text-2);

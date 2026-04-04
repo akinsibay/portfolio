@@ -1,0 +1,112 @@
+:host {
+  display: block;
+}
+
+.focus-description {
+  margin: 0.55rem auto 1.25rem;
+  max-width: 64ch;
+  text-align: center;
+  color: var(--text-2);
+}
+
+.focus-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.focus-card {
+  cursor: pointer;
+  border: 1px solid color-mix(in srgb, var(--border-soft) 92%, transparent);
+  border-radius: 1rem;
+  padding: 1.05rem 1rem 1.1rem;
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--surface-1) 92%, transparent),
+    color-mix(in srgb, var(--surface-2) 90%, transparent)
+  );
+  transition: transform 170ms ease, border-color 170ms ease, box-shadow 170ms ease;
+  text-align: left;
+}
+
+.focus-icon-wrap {
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 0.9rem;
+  margin: 0 0 0.7rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--border-soft));
+  background: linear-gradient(
+    155deg,
+    color-mix(in srgb, var(--accent) 22%, var(--surface-1)),
+    color-mix(in srgb, var(--surface-2) 90%, transparent)
+  );
+}
+
+.focus-icon-wrap img {
+  width: 26px;
+  height: 26px;
+  display: block;
+}
+
+.focus-card h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1.08rem;
+  color: color-mix(in srgb, var(--accent) 40%, var(--text-0));
+}
+
+.focus-card p {
+  margin: 0;
+  color: color-mix(in srgb, var(--text-2) 88%, var(--text-3));
+  font-size: 0.93rem;
+  line-height: 1.55;
+}
+
+.focus-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border-soft));
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.focus-card:nth-child(1) .focus-icon-wrap {
+  border-color: color-mix(in srgb, #47c16d 40%, var(--border-soft));
+  background: linear-gradient(155deg, color-mix(in srgb, #47c16d 24%, var(--surface-1)), color-mix(in srgb, var(--surface-2) 88%, transparent));
+}
+
+.focus-card:nth-child(2) .focus-icon-wrap {
+  border-color: color-mix(in srgb, #7ea7f8 40%, var(--border-soft));
+  background: linear-gradient(155deg, color-mix(in srgb, #7ea7f8 24%, var(--surface-1)), color-mix(in srgb, var(--surface-2) 88%, transparent));
+}
+
+.focus-card:nth-child(3) .focus-icon-wrap {
+  border-color: color-mix(in srgb, #7ecbba 40%, var(--border-soft));
+  background: linear-gradient(155deg, color-mix(in srgb, #7ecbba 24%, var(--surface-1)), color-mix(in srgb, var(--surface-2) 88%, transparent));
+}
+
+.focus-card:nth-child(4) .focus-icon-wrap {
+  border-color: color-mix(in srgb, #c69bef 40%, var(--border-soft));
+  background: linear-gradient(155deg, color-mix(in srgb, #c69bef 24%, var(--surface-1)), color-mix(in srgb, var(--surface-2) 88%, transparent));
+}
+
+.focus-card:nth-child(5) .focus-icon-wrap {
+  border-color: color-mix(in srgb, #f0aa65 40%, var(--border-soft));
+  background: linear-gradient(155deg, color-mix(in srgb, #f0aa65 24%, var(--surface-1)), color-mix(in srgb, var(--surface-2) 88%, transparent));
+}
+
+.focus-card:nth-child(6) .focus-icon-wrap {
+  border-color: color-mix(in srgb, #74bde9 40%, var(--border-soft));
+  background: linear-gradient(155deg, color-mix(in srgb, #74bde9 24%, var(--surface-1)), color-mix(in srgb, var(--surface-2) 88%, transparent));
+}
+
+@media (max-width: 920px) {
+  .focus-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .focus-grid {
+    grid-template-columns: 1fr;
+  }
+}

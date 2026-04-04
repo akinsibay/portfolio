@@ -1,0 +1,21 @@
+<section class="section-frame section-animate focus-section" id="focus" aria-labelledby="focus-title">
+  <h2 id="focus-title" class="section-heading">
+    What I Focus On
+  </h2>
+
+  <p class="focus-description">
+    Core engineering priorities I apply while building production-ready software systems.
+  </p>
+
+  <div class="focus-grid" role="list" aria-label="Focus areas">
+    @for (item of items; track item.title) {
+    <article class="focus-card" role="listitem">
+      <div class="focus-icon-wrap">
+        <img [src]="item.iconUrl" [alt]="item.title + ' icon'" loading="lazy" decoding="async" />
+      </div>
+      <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}</p>
+    </article>
+    }
+  </div>
+</section>
