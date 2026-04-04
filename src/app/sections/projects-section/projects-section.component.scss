@@ -102,14 +102,28 @@
   text-align: center;
 }
 
-.project-icon {
+.project-icon-wrap {
   --icon-color: #8bb8df;
-  --icon-url: none;
-  width: 38px;
-  height: 38px;
+  width: 2.7rem;
+  height: 2.7rem;
+  border-radius: 0.82rem;
+  display: inline-grid;
+  place-items: center;
   flex: 0 0 auto;
+  border: 1px solid color-mix(in srgb, var(--icon-color) 36%, var(--border-soft));
+  background: linear-gradient(
+    155deg,
+    color-mix(in srgb, var(--icon-color) 24%, var(--surface-1)),
+    color-mix(in srgb, var(--surface-2) 90%, transparent)
+  );
+}
+
+.project-icon {
+  --icon-url: none;
+  width: 24px;
+  height: 24px;
   display: inline-block;
-  background-color: var(--icon-color);
+  background-color: var(--icon-color, #8bb8df);
   -webkit-mask-image: var(--icon-url);
   mask-image: var(--icon-url);
   -webkit-mask-repeat: no-repeat;

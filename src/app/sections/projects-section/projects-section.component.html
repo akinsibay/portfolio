@@ -17,8 +17,9 @@
     @for (project of projects; track project.name) {
     <article class="project-card" role="listitem">
       <h3 class="project-heading">
-        <span class="project-icon" [style.--icon-url]="'url(' + project.iconUrl + ')'"
-          [style.--icon-color]="project.iconColor" aria-hidden="true"></span>
+        <span class="project-icon-wrap" [style.--icon-color]="project.iconColor" aria-hidden="true">
+          <span class="project-icon" [style.--icon-url]="'url(' + project.iconUrl + ')'"></span>
+        </span>
         <span>{{ project.name }}</span>
       </h3>
       <div class="title-divider" aria-hidden="true"></div>
