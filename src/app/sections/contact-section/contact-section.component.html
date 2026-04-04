@@ -1,0 +1,13 @@
+<section class="section-frame section-animate contact" id="contact" aria-labelledby="contact-title">
+  <p class="section-kicker">Contact</p>
+  <h2 id="contact-title" class="section-title">Feel free to reach out for opportunities and collaborations.</h2>
+
+  <div class="contact-actions" aria-label="Contact links">
+    @for (link of links; track link.href) {
+      <a [href]="link.href" target="_blank" rel="noreferrer">
+        <img [src]="iconUrl(link.iconSlug)" [alt]="link.label + ' icon'" loading="lazy" decoding="async">
+        <span>{{ link.label }}</span>
+      </a>
+    }
+  </div>
+</section>

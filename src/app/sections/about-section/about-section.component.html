@@ -1,0 +1,29 @@
+<section class="section-frame section-animate about" id="about" aria-labelledby="about-title">
+  <p class="section-kicker">About</p>
+  <h2 id="about-title" class="section-title">Full Stack Software Engineer</h2>
+
+  <img class="about-photo" [src]="profileImage" alt="Akın Şibay portrait" loading="lazy">
+
+  <p class="about-body">
+    Hi, I'm Akın Şibay. Senior Software Engineer experienced in developing distributed
+    systems and microservices-based web applications using modern .NET
+    and JavaScript technologies. Product-oriented, with a strong focus on
+    clean, maintainable code and sustainable software practices, and solid
+    experience in frontend development.
+  </p>
+  <p class="about-body">
+    I enjoy translating product needs into robust technical solutions, improving system performance, and shipping
+    features that stay
+    easy to operate as products and teams grow.
+  </p>
+
+  <div class="about-links" aria-label="Profile links">
+    @for (link of links; track link.href) {
+    <a [href]="link.href" [attr.target]="link.label === 'Mail' ? null : '_blank'"
+      [attr.rel]="link.label === 'Mail' ? null : 'noreferrer'">
+      <img [src]="iconUrl(link.iconSlug, link.iconUrl)" [alt]="link.label + ' icon'" loading="lazy" decoding="async">
+      <span>{{ link.label }}</span>
+    </a>
+    }
+  </div>
+</section>

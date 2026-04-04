@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Akın Şibay | Resume</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #11161d;
+      color: #f2f6fb;
+      font-family: "Manrope", "Segoe UI", sans-serif;
+    }
+    .topbar {
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px;
+      border-bottom: 1px solid #2e3a4a;
+      background: rgba(17, 22, 29, 0.88);
+      backdrop-filter: blur(8px);
+    }
+    .title {
+      font-size: 0.88rem;
+      color: #d5dfeb;
+    }
+    .actions a {
+      text-decoration: none;
+      color: #e9f4ff;
+      border: 1px solid #4f86b7;
+      border-radius: 999px;
+      padding: 0.35rem 0.7rem;
+      font-size: 0.78rem;
+    }
+    iframe {
+      width: 100%;
+      height: calc(100vh - 48px);
+      border: 0;
+      display: block;
+      background: #0f141a;
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="title">Akın Şibay Resume</div>
+    <div class="actions">
+      <a href="/Akin-Sibay-Resume.pdf" target="_blank" rel="noreferrer">Open PDF</a>
+    </div>
+  </header>
+  <iframe src="/Akin-Sibay-Resume.pdf" title="Akın Şibay Resume PDF"></iframe>
+</body>
+</html>

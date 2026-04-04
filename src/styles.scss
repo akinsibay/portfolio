@@ -1,0 +1,50 @@
+:root {
+  color-scheme: dark;
+  --surface-0: #11161d;
+  --surface-1: #18202a;
+  --surface-2: #202c39;
+  --border-soft: #2e3a4a;
+  --border-strong: #3e4d5f;
+  --text-0: #f2f6fb;
+  --text-1: #d5dfeb;
+  --text-2: #aab7c7;
+  --text-3: #7f8fa2;
+  --accent: #82b9e0;
+  --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
+  --font-body: 'Manrope', 'Segoe UI', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--surface-0);
+  color: var(--text-0);
+  font-family: var(--font-body);
+  line-height: 1.55;
+  text-rendering: optimizeLegibility;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.014) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.014) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+
+.section-frame {
+  border-top: 1px solid var(--border-soft);
+  padding: clamp(2.25rem, 6vw, 4rem) 0;
+}
+
+.section-animate {
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent) 75%, white 25%);
+  outline-offset: 2px;
+}

@@ -1,0 +1,23 @@
+<section class="section-frame section-animate" id="expertise" aria-labelledby="expertise-title">
+  <p class="section-kicker">Tech Stack</p>
+
+  <div class="category-list">
+    @for (group of groupedCards(); track group.title) {
+    <section class="category-block" [attr.aria-label]="group.title + ' technologies'">
+      <h3 class="category-title">{{ group.title }}</h3>
+
+      <div class="tech-grid" role="list">
+        @for (card of group.cards; track trackByName($index, card)) {
+        <article class="tech-card" role="listitem" [style.--tech-accent]="card.accent">
+          <div class="icon-wrap">
+            <img [src]="iconUrl(card.iconSlug, card.accent, card.iconUrl)" [alt]="card.name + ' icon'" loading="lazy"
+              decoding="async">
+          </div>
+          <h4>{{ card.name }}</h4>
+        </article>
+        }
+      </div>
+    </section>
+    }
+  </div>
+</section>

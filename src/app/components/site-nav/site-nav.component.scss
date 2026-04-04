@@ -1,0 +1,117 @@
+:host {
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+.nav-wrap {
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-strong);
+  background: color-mix(in srgb, var(--surface-0) 80%, transparent);
+}
+
+.nav {
+  width: min(1240px, calc(100% - 2rem));
+  margin: 0 auto;
+  min-height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+}
+
+.brand {
+  color: var(--text-0);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  color: var(--text-1);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 150ms ease, transform 150ms ease, border-color 150ms ease, background-color 150ms ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  color: var(--accent);
+}
+
+.nav-links a.cv-button {
+  position: relative;
+  overflow: hidden;
+  color: #e9f4ff;
+  border: 1px solid color-mix(in srgb, var(--accent) 84%, #9ed0ff);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--accent) 56%, #4f9bd2),
+    color-mix(in srgb, var(--accent) 30%, #2e6c99)
+  );
+  border-radius: 999px;
+  padding: 0 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--accent) 20%, transparent),
+    0 8px 22px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+.nav-links a.cv-button::before {
+  content: '';
+  position: absolute;
+  inset: -2px -40%;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.24) 50%,
+    transparent 65%
+  );
+  transform: translateX(-75%) skewX(-16deg);
+  transition: transform 420ms ease;
+  pointer-events: none;
+}
+
+.nav-links a.cv-button:hover,
+.nav-links a.cv-button:focus-visible {
+  color: var(--text-0);
+  transform: translateY(-1px) scale(1.015);
+  border-color: color-mix(in srgb, var(--accent) 82%, white 18%);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--accent) 35%, transparent),
+    0 12px 28px color-mix(in srgb, var(--accent) 42%, transparent);
+}
+
+.nav-links a.cv-button:hover::before,
+.nav-links a.cv-button:focus-visible::before {
+  transform: translateX(75%) skewX(-16deg);
+}
+
+@media (max-width: 860px) {
+  .nav {
+    justify-content: center;
+  }
+
+  .brand {
+    display: none;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
