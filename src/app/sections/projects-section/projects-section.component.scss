@@ -69,6 +69,7 @@
 }
 
 .project-card {
+  position: relative;
   scroll-snap-align: start;
   border: 1px solid color-mix(in srgb, var(--border-soft) 90%, transparent);
   border-radius: 1rem;
@@ -84,16 +85,20 @@
   cursor: pointer;
 }
 
+.project-card.has-repo {
+  padding-bottom: 3.7rem;
+}
+
 .project-card:hover {
   border-color: color-mix(in srgb, var(--accent) 35%, var(--border-soft));
   transform: translateY(-2px);
 }
 
 .project-heading {
+  height: 3rem;
   margin: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 0.55rem;
   font-size: 1.05rem;
   font-family: var(--font-display);
@@ -106,6 +111,8 @@
   --icon-color: #8bb8df;
   width: 2.7rem;
   height: 2.7rem;
+  width: 3.0rem;
+  height: 3.0rem;
   border-radius: 0.82rem;
   display: inline-grid;
   place-items: center;
@@ -159,42 +166,49 @@
   margin-top: 0.35rem;
 }
 
-.repo-link {
-  margin: 0;
-  width: max-content;
+.repo-stick {
+  position: absolute;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  height: 2.6rem;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.45rem;
   text-decoration: none;
-  color: color-mix(in srgb, var(--accent) 82%, var(--text-0));
-  border: 1px solid color-mix(in srgb, var(--accent) 42%, var(--border-soft));
-  background: color-mix(in srgb, var(--accent) 14%, var(--surface-2));
-  border-radius: 999px;
-  padding: 0.33rem 0.66rem;
+  color: color-mix(in srgb, var(--accent) 86%, #d7edff);
+  border-top: 1px solid color-mix(in srgb, var(--accent) 34%, var(--border-soft));
+  border-right: 1px solid color-mix(in srgb, var(--border-soft) 90%, transparent);
+  border-left: 1px solid color-mix(in srgb, var(--border-soft) 90%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--border-soft) 90%, transparent);
+  border-radius: 0 0 1rem 1rem;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--accent) 16%, var(--surface-2)),
+    color-mix(in srgb, var(--surface-2) 92%, transparent)
+  );
   font-size: 0.78rem;
   font-weight: 600;
-  transition: transform 150ms ease, border-color 150ms ease, background-color 150ms ease;
+  transition: color 150ms ease, background-color 150ms ease;
 }
 
-.repo-row {
-  margin-top: 0.68rem;
-  padding-top: 0.62rem;
-  border-top: 1px solid color-mix(in srgb, var(--border-soft) 60%, transparent);
-  display: flex;
-  justify-content: center;
-}
-
-.repo-link svg {
+.repo-stick svg {
   width: 14px;
   height: 14px;
   fill: currentColor;
 }
 
-.repo-link:hover,
-.repo-link:focus-visible {
-  transform: translateY(-1px);
-  border-color: color-mix(in srgb, var(--accent) 62%, var(--border-soft));
-  background: color-mix(in srgb, var(--accent) 22%, var(--surface-2));
+.repo-stick:hover,
+.repo-stick:focus-visible {
+  color: color-mix(in srgb, var(--accent) 86%, #dff2ff);
+  border-width: 1px;
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border-soft));
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--accent) 22%, var(--surface-2)),
+    color-mix(in srgb, var(--surface-2) 90%, transparent)
+  );
 }
 
 .stack-title {
@@ -235,11 +249,7 @@
     justify-content: center;
   }
 
-  .repo-link {
-    margin-inline: auto;
-  }
-
-  .repo-row {
-    justify-content: center;
+  .project-card.has-repo {
+    padding-bottom: 3.6rem;
   }
 }

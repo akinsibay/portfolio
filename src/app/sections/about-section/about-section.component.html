@@ -23,8 +23,9 @@
 
   <div class="about-links" aria-label="Profile links">
     @for (link of links; track link.href) {
-    <a [href]="link.href" [attr.target]="link.label === 'Mail' ? null : '_blank'"
-      [attr.rel]="link.label === 'Mail' ? null : 'noreferrer'">
+    <a [href]="link.href" [attr.target]="link.external ? '_blank' : null"
+      [attr.rel]="link.external ? 'noreferrer' : null"
+      [class.resume-pill]="link.label === 'Download CV'">
       <img [src]="iconUrl(link.iconSlug, link.iconUrl)" [alt]="link.label + ' icon'" loading="lazy" decoding="async">
       <span>{{ link.label }}</span>
     </a>

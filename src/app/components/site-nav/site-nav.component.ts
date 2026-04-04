@@ -18,7 +18,6 @@ export class SiteNavComponent {
     { label: 'About', href: '#about' },
     { label: 'Projects', href: '#projects' },
     { label: 'Focus', href: '#focus' },
-    { label: 'Tech Stack', href: '#expertise' },
-    { label: 'View Resume', href: '/resume.html', external: true, isCta: true }
+    { label: 'Technologies', href: '#expertise' }
   ];
 }

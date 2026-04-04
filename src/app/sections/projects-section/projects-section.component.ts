@@ -50,7 +50,7 @@ export class ProjectsSectionComponent {
       details: ['Architected and developed real-time features including live dashboards, chat, and collaborative workflow management.'],
       iconUrl: '/icons/project-workflow.svg',
       iconColor: '#53c400',
-      stack: ['Node.js', '.NET Core', 'React', 'TypeScript', 'Python', 'RabbitMQ', 'Redis', 'PostgreSQL', 'MongoDB', 'WebSocket'],
+      stack: ['Node.js', '.NET Core', 'React', 'TypeScript', 'Python', 'RabbitMQ', 'PostgreSQL', 'MongoDB', 'WebSocket'],
       repoUrl: 'https://github.com/originzero-io/originzero'
     },
     {
