@@ -15,6 +15,15 @@
   color: color-mix(in srgb, var(--accent) 18%, var(--text-0));
 }
 
+.section-description {
+  margin: 0.5rem auto 0.3rem;
+  max-width: 96ch;
+  text-align: center;
+  color: var(--text-2);
+  font-size: clamp(0.95rem, 1.2vw, 1.02rem);
+  line-height: 1.6;
+}
+
 .category-list {
   margin-top: 1.5rem;
   display: grid;
@@ -22,10 +31,9 @@
 }
 
 .category-block {
-  cursor: pointer;
   border: 1px solid color-mix(in srgb, var(--border-strong) 34%, transparent);
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 0.8rem;
   background: linear-gradient(
     165deg,
     color-mix(in srgb, var(--surface-1) 38%, transparent),
@@ -39,7 +47,7 @@
 }
 
 .category-title {
-  margin: 0 0 0.8rem;
+  margin: 0rem 0rem 0.8rem;
   text-align: left;
   font-size: 1.05rem;
   letter-spacing: 0.05em;
@@ -53,10 +61,11 @@
 }
 
 .tech-card {
+  cursor: pointer;
   --tech-accent: var(--accent);
   border: 1px solid var(--border-soft);
   border-radius: 1rem;
-  padding: 0.5rem 0.58rem;
+  padding: 0.3rem 0.58rem;
   background: linear-gradient(
     160deg,
     color-mix(in srgb, var(--surface-1) 95%, transparent),
@@ -82,8 +91,8 @@
 }
 
 .icon-wrap {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   border-radius: 9px;
   display: grid;
   place-items: center;
