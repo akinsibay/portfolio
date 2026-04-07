@@ -3,34 +3,56 @@
 }
 
 .about {
-  text-align: center;
+  text-align: left;
+  padding: 1.2rem;
 }
 
-.section-title {
-  margin: 0.5rem auto 1rem;
-  font-size: clamp(2.2rem, 5vw, 3.4rem);
+.about-hero {
+  margin-top: 1.15rem;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1.1rem, 3vw, 2rem);
+}
+
+.about-name {
+  margin: 0;
+  font-size: clamp(2.35rem, 5.2vw, 4rem);
   font-family: var(--font-display);
   letter-spacing: -0.02em;
-  max-width: 30ch;
-  color: #c4e3f6;
+  color: color-mix(in srgb, var(--accent) 50%, var(--text-0));
+}
+
+.about-role {
+  margin: 0.25rem 0 0;
+  font-size: clamp(1.3rem, 1.7vw, 1.34rem);
+  color: var(--text-2);
+}
+
+.about-intro {
+  min-width: 0;
 }
 
 .about-photo {
-  width: clamp(154px, 24vw, 214px);
+  width: clamp(180px, 24vw, 248px);
   aspect-ratio: 1;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid color-mix(in srgb, var(--accent) 45%, var(--border-strong));
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.28);
-  margin: 0.5rem auto 1rem;
+  margin: 0;
 }
 
 .about-body {
-  margin: 0 auto;
-  max-width: 96ch;
+  margin: 0;
+  width: 100%;
   color: var(--text-1);
   font-size: clamp(0.95rem, 1.2vw, 1.03rem);
   line-height: 1.65;
+}
+
+.about-body-primary {
+  margin-top: 2.4rem;
 }
 
 .about-body + .about-body {
@@ -44,9 +66,9 @@
 }
 
 .about-links {
-  margin-top: 1.1rem;
+  margin-top: 0.95rem;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.7rem;
   flex-wrap: wrap;
 }
@@ -86,7 +108,7 @@
 
 .about-links a:hover,
 .about-links a:focus-visible {
-  width: 9.6rem;
+  width: 10.6rem;
   gap: 0.48rem;
   transform: translateY(-1px);
   border-color: var(--accent);
@@ -95,7 +117,7 @@
 
 .about-links a:hover span,
 .about-links a:focus-visible span {
-  max-width: 7rem;
+  max-width: 8rem;
   opacity: 1;
   transform: translateX(0);
 }
@@ -105,18 +127,20 @@
   min-width: 10.2rem;
   padding: 0 0.9rem;
   gap: 0.5rem;
+  color: #e8f3ff;
+  border-color: #6d98c1;
   background: linear-gradient(
     135deg,
-    color-mix(in srgb, var(--accent) 38%, #1e4f83),
-    color-mix(in srgb, var(--accent) 20%, #143a63)
+    #4275a3,
+    #3a6790
   );
-  border-color: color-mix(in srgb, var(--accent) 52%, #1a4f7f);
-  color: #e7f2ff;
-  box-shadow: 0 10px 22px color-mix(in srgb, #17466f 34%, transparent);
+  box-shadow:
+    0 0 0 1px rgba(125, 170, 210, 0.18),
+    0 10px 22px rgba(29, 68, 104, 0.34);
 }
 
 .about-links a.resume-pill span {
-  max-width: 7rem;
+  max-width: 8rem;
   opacity: 1;
   transform: translateX(0);
 }
@@ -126,8 +150,37 @@
   width: auto;
   min-width: 10.2rem;
   gap: 0.5rem;
-  border-color: color-mix(in srgb, var(--accent) 62%, #2f73ab);
-  box-shadow: 0 14px 26px color-mix(in srgb, #17466f 40%, transparent);
+  border-color: #85b1da;
+  box-shadow:
+    0 0 0 1px rgba(145, 188, 225, 0.26),
+    0 14px 26px rgba(29, 68, 104, 0.4);
+}
+
+@media (max-width: 860px) {
+  .about {
+    text-align: center;
+  }
+
+  .about-hero {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .about-intro {
+    text-align: center;
+  }
+
+  .about-links {
+    justify-content: center;
+  }
+
+  .about-body {
+    text-align: left;
+  }
+
+  .about-story-title {
+    text-align: left;
+  }
 }
 
 @media (hover: none) {
@@ -139,8 +192,13 @@
   }
 
   .about-links a span {
-    max-width: 7rem;
+    max-width: 8rem;
     opacity: 1;
     transform: translateX(0);
+  }
+
+  .about-links a.resume-pill {
+    min-width: 10.2rem;
+    padding: 0 0.9rem;
   }
 }

@@ -17,23 +17,8 @@
   min-height: 4rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 1.2rem;
-}
-
-.brand {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.18rem;
-  letter-spacing: -0.01em;
-}
-
-.brand-text {
-  font-size: 1.2rem;
-  color: #aed3ed;
 }
 
 .nav-links {
@@ -112,10 +97,6 @@
 @media (max-width: 860px) {
   .nav {
     justify-content: center;
-  }
-
-  .brand {
-    display: none;
   }
 
   .nav-links {
