@@ -1,20 +1,26 @@
-<section class="section-frame section-animate focus-section" id="focus" aria-labelledby="focus-title">
-  <h2 id="focus-title" class="section-heading">
-    What I Focus On
-  </h2>
+<section class="section-frame focus-section" id="focus" aria-labelledby="focus-title">
+  <div class="section-head" appReveal>
+    <span class="section-index" aria-hidden="true">02</span>
+    <h2 id="focus-title" class="section-heading">What I Focus On</h2>
+    <span class="section-rule" aria-hidden="true"></span>
+  </div>
 
-  <p class="focus-description">
+  <p class="focus-description" appReveal="60">
     Core engineering priorities I apply while building production-ready software systems.
   </p>
 
   <div class="focus-grid" role="list" aria-label="Focus areas">
-    @for (item of items; track item.title) {
-    <article class="focus-card" role="listitem">
-      <div class="focus-icon-wrap">
-        <img [src]="item.iconUrl" [alt]="item.title + ' icon'" loading="lazy" decoding="async" />
+    @for (item of items; track item.title; let i = $index) {
+    <article class="focus-card" role="listitem" appSpotlight [appReveal]="60 + i * 55" [style.--card-accent]="item.accent">
+      <div class="focus-top">
+        <div class="focus-icon-wrap">
+          <img [src]="item.iconUrl" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+        </div>
+        <span class="focus-index" aria-hidden="true">{{ indexLabel(i) }}</span>
       </div>
+
       <h3>{{ item.title }}</h3>
-        <p>{{ item.description }}</p>
+      <p>{{ item.description }}</p>
     </article>
     }
   </div>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RevealDirective } from '../../shared/reveal.directive';
 
 interface AboutLink {
   label: string;
@@ -11,6 +12,7 @@ interface AboutLink {
 @Component({
   selector: 'app-about-section',
   standalone: true,
+  imports: [RevealDirective],
   templateUrl: './about-section.component.html',
   styleUrl: './about-section.component.scss'
 })

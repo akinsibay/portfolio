@@ -1,13 +1,28 @@
-<header class="nav-wrap">
+<header class="nav-wrap" [class.is-scrolled]="scrolled()">
   <nav class="nav" aria-label="Primary">
+    <a class="brand" href="#about" aria-label="Back to top">
+      <span class="brand-mark" aria-hidden="true">AŞ</span>
+      <span class="brand-text">Akın Şibay</span>
+    </a>
+
     <ul class="nav-links">
       @for (link of navLinks; track link.href) {
         <li>
-          <a [href]="link.href" [class.cv-button]="link.isCta" [attr.target]="link.external ? '_blank' : null" [attr.rel]="link.external ? 'noreferrer' : null">
-            {{ link.label }}
+          <a
+            [href]="link.href"
+            [class.cv-button]="link.isCta"
+            [class.is-active]="!link.isCta && activeHref() === link.href"
+            [attr.aria-current]="activeHref() === link.href ? 'true' : null"
+            [attr.target]="link.external ? '_blank' : null"
+            [attr.rel]="link.external ? 'noreferrer' : null">
+            <span class="nav-label">{{ link.label }}</span>
           </a>
         </li>
       }
     </ul>
   </nav>
+
+  <div class="nav-progress" aria-hidden="true">
+    <span [style.transform]="'scaleX(' + progress() + ')'"></span>
+  </div>
 </header>

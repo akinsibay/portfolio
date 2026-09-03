@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RevealDirective } from '../../shared/reveal.directive';
 
 interface TechCard {
   name: string;
@@ -16,6 +17,7 @@ interface TechGroup {
 @Component({
   selector: 'app-expertise-section',
   standalone: true,
+  imports: [RevealDirective],
   templateUrl: './expertise-section.component.html',
   styleUrl: './expertise-section.component.scss'
 })

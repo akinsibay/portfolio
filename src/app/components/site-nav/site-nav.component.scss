@@ -6,101 +6,249 @@
 }
 
 .nav-wrap {
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border-strong);
-  background: color-mix(in srgb, var(--surface-0) 80%, transparent);
+  position: relative;
+  background: color-mix(in srgb, var(--surface-0) 72%, transparent);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  border-bottom: 1px solid transparent;
+  transition: background-color 240ms ease, border-color 240ms ease;
+}
+
+.nav-wrap.is-scrolled {
+  background: color-mix(in srgb, var(--surface-0) 88%, transparent);
+  border-bottom-color: var(--border-soft);
 }
 
 .nav {
   width: min(1240px, calc(100% - 2rem));
   margin: 0 auto;
-  min-height: 4rem;
+  min-height: 4.15rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 1.2rem;
 }
+
+/* ---------- Brand ---------- */
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--text-1);
+  flex: 0 0 auto;
+  transition: color 180ms ease;
+}
+
+.brand-mark {
+  width: 2.1rem;
+  height: 2.1rem;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-0);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border-strong));
+  background: linear-gradient(
+    150deg,
+    color-mix(in srgb, var(--accent) 26%, var(--surface-2)),
+    var(--surface-1)
+  );
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms var(--ease-out);
+}
+
+.brand-text {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.brand:hover .brand-mark,
+.brand:focus-visible .brand-mark {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--accent) 60%, transparent);
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.brand:hover,
+.brand:focus-visible {
+  color: var(--text-0);
+}
+
+/* ---------- Links ---------- */
 
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 1rem;
+  align-items: center;
+  gap: 0.15rem;
   padding: 0;
   margin: 0;
 }
 
 .nav-links a {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 2rem;
-  color: var(--text-1);
+  height: 2.2rem;
+  padding: 0 0.72rem;
+  border-radius: 8px;
+  color: var(--text-2);
   text-decoration: none;
-  font-size: 0.9rem;
-  transition: color 150ms ease, transform 150ms ease, border-color 150ms ease, background-color 150ms ease;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: color 180ms ease, background-color 180ms ease;
 }
 
-.nav-links a:hover,
-.nav-links a:focus-visible {
-  color: var(--accent);
+.nav-links a:not(.cv-button)::after {
+  content: '';
+  position: absolute;
+  left: 0.72rem;
+  right: 0.72rem;
+  bottom: 0.28rem;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 260ms var(--ease-out);
 }
+
+.nav-links a:not(.cv-button):hover,
+.nav-links a:not(.cv-button):focus-visible {
+  color: var(--text-0);
+  background: color-mix(in srgb, var(--surface-2) 70%, transparent);
+}
+
+.nav-links a.is-active {
+  color: var(--text-0);
+}
+
+.nav-links a.is-active::after,
+.nav-links a:not(.cv-button):hover::after {
+  transform: scaleX(1);
+}
+
+/* ---------- CV pill ---------- */
 
 .nav-links a.cv-button {
   position: relative;
+  margin-left: 0.55rem;
   overflow: hidden;
-  color: #e9f4ff;
-  border: 1px solid color-mix(in srgb, var(--accent) 84%, #9ed0ff);
+  color: var(--text-0);
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--border-strong));
   background: linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--accent) 56%, #4f9bd2),
-    color-mix(in srgb, var(--accent) 30%, #2e6c99)
+    140deg,
+    color-mix(in srgb, var(--accent) 22%, var(--surface-2)),
+    color-mix(in srgb, var(--surface-1) 92%, transparent)
   );
   border-radius: 999px;
   padding: 0 0.95rem;
   font-weight: 600;
-  letter-spacing: 0.01em;
-  box-shadow:
-    0 0 0 1px color-mix(in srgb, var(--accent) 20%, transparent),
-    0 8px 22px color-mix(in srgb, var(--accent) 35%, transparent);
+  font-size: 0.84rem;
+  transition: border-color 200ms ease, transform 200ms var(--ease-out), box-shadow 200ms ease;
 }
 
 .nav-links a.cv-button::before {
   content: '';
   position: absolute;
   inset: -2px -40%;
-  background: linear-gradient(
-    105deg,
-    transparent 35%,
-    rgba(255, 255, 255, 0.24) 50%,
-    transparent 65%
-  );
-  transform: translateX(-75%) skewX(-16deg);
-  transition: transform 420ms ease;
+  background: linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, 0.16) 50%, transparent 62%);
+  transform: translateX(-80%) skewX(-16deg);
+  transition: transform 620ms var(--ease-out);
   pointer-events: none;
 }
 
 .nav-links a.cv-button:hover,
 .nav-links a.cv-button:focus-visible {
-  color: var(--text-0);
-  transform: translateY(-1px) scale(1.015);
-  border-color: color-mix(in srgb, var(--accent) 82%, white 18%);
-  box-shadow:
-    0 0 0 1px color-mix(in srgb, var(--accent) 35%, transparent),
-    0 12px 28px color-mix(in srgb, var(--accent) 42%, transparent);
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--accent) 70%, transparent);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 22%, transparent);
 }
 
 .nav-links a.cv-button:hover::before,
 .nav-links a.cv-button:focus-visible::before {
-  transform: translateX(75%) skewX(-16deg);
+  transform: translateX(80%) skewX(-16deg);
+}
+
+/* ---------- Reading progress ---------- */
+
+.nav-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.nav-progress span {
+  display: block;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--accent-deep), var(--accent), var(--signal));
 }
 
 @media (max-width: 860px) {
   .nav {
+    min-height: 3.7rem;
+    flex-wrap: wrap;
     justify-content: center;
+    padding: 0.55rem 0;
+    gap: 0.5rem;
   }
 
   .nav-links {
     flex-wrap: wrap;
     justify-content: center;
+  }
+
+  .nav-links a {
+    font-size: 0.82rem;
+    padding: 0 0.55rem;
+  }
+
+  .nav-links a.cv-button {
+    margin-left: 0.25rem;
+  }
+}
+
+@media (max-width: 620px) {
+  .nav {
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    padding: 0.4rem 0;
+  }
+
+  .nav-links {
+    gap: 0;
+  }
+
+  .nav-links a {
+    padding: 0 0.42rem;
+    font-size: 0.78rem;
+  }
+
+  /* The hero already carries the CV action on small screens. */
+  .nav-links a.cv-button {
+    display: none;
+  }
+}
+
+@media (max-width: 430px) {
+  .brand-text {
+    display: none;
+  }
+
+  .nav-links a {
+    padding: 0 0.34rem;
+    font-size: 0.74rem;
   }
 }

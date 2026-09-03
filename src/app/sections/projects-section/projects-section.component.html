@@ -1,56 +1,99 @@
-<section class="section-frame section-animate" id="projects" aria-labelledby="projects-title">
-  <h2 id="projects-title" class="section-heading">
-    Featured Projects
-  </h2>
-  <p class="section-description">
+<section class="section-frame" id="projects" aria-labelledby="projects-title">
+  <div class="section-head" appReveal>
+    <span class="section-index" aria-hidden="true">01</span>
+    <h2 id="projects-title" class="section-heading">Featured Projects</h2>
+    <span class="section-rule" aria-hidden="true"></span>
+  </div>
+
+  <p class="section-description" appReveal="60">
     Throughout my career, I’ve worked on a wide range of projects across both corporate environments and my own startup.
     <br>
     Here are some of the most notable ones.
   </p>
 
-  <div class="controls" aria-label="Project carousel controls">
-    <button type="button" (click)="scroll('left')" aria-label="Scroll projects left">←</button>
-    <button type="button" (click)="scroll('right')" aria-label="Scroll projects right">→</button>
+  <div class="carousel-bar" appReveal="100">
+    <div class="carousel-progress" aria-hidden="true">
+      <span [style.transform]="'scaleX(' + (0.14 + progress() * 0.86) + ')'"></span>
+    </div>
+
+    <div class="controls" aria-label="Project carousel controls">
+      <button type="button" (click)="scroll('left')" [disabled]="atStart()" aria-label="Scroll projects left">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M15 5 8 12l7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+      <button type="button" (click)="scroll('right')" [disabled]="atEnd()" aria-label="Scroll projects right">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
   </div>
 
-  <div #track class="project-track" role="list" aria-label="Project cards">
-    @for (project of projects; track project.name) {
-    <article class="project-card" role="listitem" [class.has-repo]="!!project.repoUrl">
-      <h3 class="project-heading">
-        <span class="project-icon-wrap" [style.--icon-color]="project.iconColor" aria-hidden="true">
-          <span class="project-icon" [style.--icon-url]="'url(' + project.iconUrl + ')'"></span>
-        </span>
-        <span style="width: 100%">{{ project.name }}</span>
-      </h3>
-      <div class="title-divider" aria-hidden="true"></div>
+  <div class="track-viewport" [class.at-start]="atStart()" [class.at-end]="atEnd()">
+    <div #track class="project-track" role="list" aria-label="Project cards">
+      @for (project of projects; track project.name; let i = $index) {
+      <article class="project-card" role="listitem" appSpotlight [class.has-repo]="!!project.repoUrl"
+        [class.is-current]="!!project.current" [style.--icon-color]="project.iconColor">
+        <span class="card-index" aria-hidden="true">{{ cardIndex(i) }}</span>
 
-      <p class="project-description">{{ project.description }}</p>
+        <h3 class="project-heading">
+          <span class="project-icon-wrap" aria-hidden="true">
+            <span class="project-icon" [style.--icon-url]="'url(' + project.iconUrl + ')'"></span>
+          </span>
+          <span class="project-title">{{ project.name }}</span>
+        </h3>
 
-      @if (project.details.length) {
-      <ul class="project-details">
-        @for (detail of project.details; track detail) {
-        <li>{{ detail }}</li>
+        @if (project.company) {
+        <p class="project-meta">
+          @if (project.current) {
+          <span class="live-dot" aria-hidden="true"></span>
+          }
+          <span class="meta-company">{{ project.company }}</span>
+          <span class="meta-sep" aria-hidden="true">/</span>
+          <span>{{ project.role }}</span>
+          <span class="meta-sep" aria-hidden="true">/</span>
+          <span class="meta-period">{{ project.period }}</span>
+        </p>
         }
-      </ul>
-      }
 
-      <p class="stack-title">Tech Stack</p>
-      <ul class="stack-list">
-        @for (item of project.stack; track item) {
-        <li [style.--chip-color]="techColor(item)">{{ item }}</li>
+        <div class="title-divider" aria-hidden="true"></div>
+
+        @if (descriptionParts(project); as parts) {
+        <p class="project-description">{{ parts.before }}<a class="description-link" [href]="parts.url" target="_blank"
+            rel="noreferrer">{{ parts.label }}</a>{{ parts.after }}</p>
+        } @else {
+        <p class="project-description">{{ project.description }}</p>
         }
-      </ul>
 
-      @if (project.repoUrl) {
-      <a class="repo-stick" [href]="project.repoUrl" target="_blank" rel="noreferrer">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path
-            d="M12 2a10 10 0 0 0-3.16 19.49c.5.1.68-.21.68-.48v-1.67c-2.77.6-3.35-1.17-3.35-1.17-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.61.07-.61 1 .07 1.52 1.03 1.52 1.03.89 1.52 2.33 1.08 2.9.83.09-.64.35-1.08.64-1.33-2.21-.25-4.53-1.11-4.53-4.95 0-1.09.39-1.98 1.03-2.67-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.53 9.53 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.69 1.03 1.58 1.03 2.67 0 3.85-2.32 4.7-4.53 4.95.36.31.68.92.68 1.86v2.76c0 .27.18.59.69.49A10 10 0 0 0 12 2Z" />
-        </svg>
-        <span>Go to Repository</span>
-      </a>
+        @if (project.details.length) {
+        <ul class="project-details">
+          @for (detail of project.details; track detail) {
+          <li>{{ detail }}</li>
+          }
+        </ul>
+        }
+
+        <p class="stack-title">Tech Stack</p>
+        <ul class="stack-list">
+          @for (item of project.stack; track item) {
+          <li [style.--chip-color]="techColor(item)">{{ item }}</li>
+          }
+        </ul>
+
+        @if (project.repoUrl) {
+        <a class="repo-stick" [href]="project.repoUrl" target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M12 2a10 10 0 0 0-3.16 19.49c.5.1.68-.21.68-.48v-1.67c-2.77.6-3.35-1.17-3.35-1.17-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.61.07-.61 1 .07 1.52 1.03 1.52 1.03.89 1.52 2.33 1.08 2.9.83.09-.64.35-1.08.64-1.33-2.21-.25-4.53-1.11-4.53-4.95 0-1.09.39-1.98 1.03-2.67-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.53 9.53 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.69 1.03 1.58 1.03 2.67 0 3.85-2.32 4.7-4.53 4.95.36.31.68.92.68 1.86v2.76c0 .27.18.59.69.49A10 10 0 0 0 12 2Z" />
+          </svg>
+          <span>Go to Repository</span>
+        </a>
+        }
+      </article>
       }
-    </article>
-    }
+    </div>
   </div>
 </section>

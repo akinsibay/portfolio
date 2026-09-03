@@ -1,7 +1,12 @@
 <app-site-nav />
 
 <main class="page-shell" aria-label="Portfolio content">
-  <div class="backdrop-layer" aria-hidden="true"></div>
+  <div class="backdrop-layer" aria-hidden="true">
+    <div class="backdrop-grid"></div>
+    <div class="backdrop-glow"></div>
+    <div class="backdrop-pointer"></div>
+  </div>
+
   <app-about-section />
   <app-projects-section />
   <app-focus-section />
@@ -9,5 +14,6 @@
 </main>
 
 <footer class="site-footer">
-  © {{ currentYear }} - Developed By Akın Şibay - All rights reserved.
+  <span class="footer-line" aria-hidden="true"></span>
+  <p>© {{ currentYear }} - Developed By Akın Şibay - All rights reserved.</p>
 </footer>
