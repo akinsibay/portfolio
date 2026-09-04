@@ -4,6 +4,7 @@ import { AboutSectionComponent } from './sections/about-section/about-section.co
 import { ExpertiseSectionComponent } from './sections/expertise-section/expertise-section.component';
 import { FocusSectionComponent } from './sections/focus-section/focus-section.component';
 import { ProjectsSectionComponent } from './sections/projects-section/projects-section.component';
+import { CONTACT_LINKS, profileIconUrl } from './shared/profile-links';
 
 @Component({
   selector: 'app-root',
@@ -26,6 +27,11 @@ export class App implements OnInit, OnDestroy {
   constructor(private readonly ngZone: NgZone) {}
 
   protected readonly currentYear = new Date().getFullYear();
+  protected readonly contactLinks = CONTACT_LINKS;
+
+  protected iconUrl(slug: string, fallbackUrl?: string): string {
+    return profileIconUrl(slug, fallbackUrl);
+  }
 
   ngOnInit(): void {
     this.applyPointerPosition();

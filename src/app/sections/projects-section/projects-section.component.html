@@ -52,10 +52,9 @@
           <span class="live-dot" aria-hidden="true"></span>
           }
           <span class="meta-company">{{ project.company }}</span>
-          <span class="meta-sep" aria-hidden="true">/</span>
-          <span>{{ project.role }}</span>
-          <span class="meta-sep" aria-hidden="true">/</span>
+          @if (project.period) {
           <span class="meta-period">{{ project.period }}</span>
+          }
         </p>
         }
 

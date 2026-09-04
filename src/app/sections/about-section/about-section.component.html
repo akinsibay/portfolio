@@ -9,7 +9,7 @@
         Full Stack Software Engineer
       </p>
 
-      <div class="about-links" aria-label="Profile links">
+      <nav class="about-links" aria-label="Profile links">
         @for (link of links; track link.href) {
         <a [href]="link.href" [attr.target]="link.external ? '_blank' : null"
           [attr.rel]="link.external ? 'noreferrer' : null" [class.resume-pill]="link.label === 'Download CV'"
@@ -18,13 +18,14 @@
           <span>{{ link.label }}</span>
         </a>
         }
-      </div>
+      </nav>
     </div>
 
     <div class="about-portrait" appReveal="120">
       <span class="portrait-ring" aria-hidden="true"></span>
       <span class="portrait-arc" aria-hidden="true"></span>
-      <img class="about-photo" [src]="profileImage" alt="Akın Şibay portrait" loading="lazy" decoding="async">
+      <img class="about-photo" [src]="profileImage" alt="Akın Şibay portrait" fetchpriority="high"
+        decoding="async">
     </div>
   </div>
 
@@ -32,18 +33,16 @@
     <span class="copy-rail" aria-hidden="true"></span>
 
     <p class="about-body about-body-primary">
-      Hi, I'm <span class="name-highlight">Akın Şibay</span>. Senior Software Engineer experienced in developing
-      distributed
-      systems and microservices-based web applications using modern
+      Hi, I'm <span class="name-highlight">Akın Şibay</span>. Senior Software Engineer experienced in designing and
+      developing distributed, microservices-based applications using modern
       <span class="tech-dotnet">.NET</span> and
-      <span class="tech-javascript">JavaScript</span> technologies. Product-oriented, with a strong focus on
-      clean, maintainable code and sustainable software practices, and solid
-      experience in frontend development.
+      <span class="tech-javascript">JavaScript</span> technologies. Product-oriented, with a strong focus on software
+      architecture, code quality, and long-term maintainability, and solid experience in frontend development.
     </p>
     <p class="about-body">
-      I enjoy translating product needs into robust technical solutions, improving system performance, and shipping
-      features that stay
-      easy to operate as products and teams grow.
+      I enjoy translating product needs into robust technical solutions and shipping features that stay easy to
+      operate as products grow. Passionate about teamwork, knowledge sharing, continuous learning, and helping teams
+      build better software together.
     </p>
   </div>
 </section>

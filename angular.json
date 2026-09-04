@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "codex-portfolio": {
+    "akin-sibay-portfolio": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -61,10 +61,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "codex-portfolio:build:production"
+              "buildTarget": "akin-sibay-portfolio:build:production"
             },
             "development": {
-              "buildTarget": "codex-portfolio:build:development"
+              "buildTarget": "akin-sibay-portfolio:build:development"
             }
           },
           "defaultConfiguration": "development"

@@ -33,16 +33,8 @@ export class ExpertiseSectionComponent {
     },
     { name: 'Node.js', iconSlug: 'nodedotjs', group: 'Backend', accent: '#5fa04e' },
     { name: 'TypeScript', iconSlug: 'typescript', group: 'Backend', accent: '#3178c6' },
-    { name: 'Express', iconSlug: 'express', group: 'Backend', accent: '#ffffff' },
     { name: 'RabbitMQ', iconSlug: 'rabbitmq', group: 'Backend', accent: '#ff6600' },
     { name: 'Redis', iconSlug: 'redis', group: 'Backend', accent: '#dc382d' },
-    {
-      name: 'WebSocket',
-      iconSlug: 'websocket',
-      group: 'Backend',
-      accent: '#00b2ff',
-      iconUrl: '/icons/websocket.svg'
-    },
     { name: 'React', iconSlug: 'react', group: 'Frontend', accent: '#61dafb' },
     { name: 'Angular', iconSlug: 'angular', group: 'Frontend', accent: '#dd0031' },
     { name: 'JavaScript', iconSlug: 'javascript', group: 'Frontend', accent: '#f7df1e' },
@@ -71,8 +63,8 @@ export class ExpertiseSectionComponent {
   ];
 
   protected readonly groupOrder: string[] = [
-    'Frontend',
     'Backend',
+    'Frontend',
     'Databases',
     'DevOps'
   ];

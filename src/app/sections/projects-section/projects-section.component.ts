@@ -17,7 +17,6 @@ interface ProjectItem {
   iconColor: string;
   repoUrl?: string;
   company?: string;
-  role?: string;
   period?: string;
   current?: boolean;
 }
@@ -79,6 +78,8 @@ export class ProjectsSectionComponent implements AfterViewInit, OnDestroy {
       ],
       iconUrl: '/icons/project-treva.svg',
       iconColor: '#4fb0c6',
+      company: 'TAV Technologies',
+      period: '2026 — Present',
       current: true,
       stack: [
         '.NET',
@@ -93,16 +94,6 @@ export class ProjectsSectionComponent implements AfterViewInit, OnDestroy {
       ]
     },
     {
-      name: 'OriginZero: Low-Code Workflow Automation Platform',
-      description:
-        'Co-founded and built a n8n-like low-code workflow automation platform with a drag-and-drop interface for designing complex workflows and API integrations.',
-      details: ['Architected and developed real-time features including live dashboards, chat, and collaborative workflow management.'],
-      iconUrl: '/icons/project-workflow.svg',
-      iconColor: '#53c400',
-      stack: ['Node.js', '.NET Core', 'React', 'TypeScript', 'Python', 'RabbitMQ', 'PostgreSQL', 'MongoDB', 'WebSocket'],
-      repoUrl: 'https://github.com/originzero-io/originzero'
-    },
-    {
       name: 'Digital Logistics Platform',
       description:
         'Contributed to a large-scale, high-traffic, microservices-based logistics platform within a complex distributed system.',
@@ -111,7 +102,32 @@ export class ProjectsSectionComponent implements AfterViewInit, OnDestroy {
       ],
       iconUrl: '/icons/project-logistics.svg',
       iconColor: '#cf7d3b',
+      company: 'Borusan Logistics',
+      period: '2024 — 2026',
       stack: ['.NET Core', 'PostgreSQL', 'MSSQL', 'MongoDB', 'RabbitMQ', 'Redis', 'Docker', 'Azure DevOps']
+    },
+    {
+      name: 'OriginZero: Low-Code Workflow Automation Platform',
+      description:
+        'Co-founded and built a n8n-like low-code workflow automation platform with a drag-and-drop interface for designing complex workflows and API integrations.',
+      details: ['Architected and developed real-time features including live dashboards, chat, and collaborative workflow management.'],
+      iconUrl: '/icons/project-workflow.svg',
+      iconColor: '#53c400',
+      company: 'OriginZero Technologies',
+      period: '2021 — 2024',
+      stack: ['Node.js', '.NET Core', 'React', 'TypeScript', 'Python', 'RabbitMQ', 'PostgreSQL', 'MongoDB', 'WebSocket'],
+      repoUrl: 'https://github.com/originzero-io/originzero'
+    },
+    {
+      name: 'ERP & Business Management Solutions',
+      description:
+        'Designed and deployed medium-scale ERP applications with full integration into Logo Software for streamlined business operations.',
+      details: ['Automated complex industrial workflows, bridging shop floor data with corporate resource planning.'],
+      iconUrl: '/icons/project-erp.svg',
+      iconColor: '#9b8dd6',
+      company: 'Anaks R&D',
+      period: '2020 — 2024',
+      stack: ['.NET Core', 'React', 'Angular', 'Node.js', 'MSSQL', 'PostgreSQL']
     },
     {
       name: 'Production Tracking & Control Systems',
@@ -122,16 +138,9 @@ export class ProjectsSectionComponent implements AfterViewInit, OnDestroy {
       ],
       iconUrl: '/icons/project-factory.svg',
       iconColor: '#6fa0c9',
+      company: 'APRA Engineering',
+      period: '2018 — 2020',
       stack: ['.NET Core', 'React', 'Node.js', 'Angular', 'MSSQL', 'PostgreSQL', 'RabbitMQ', 'Azure DevOps', 'WebSocket']
-    },
-    {
-      name: 'ERP & Business Management Solutions',
-      description:
-        'Designed and deployed medium-scale ERP applications with full integration into Logo Software for streamlined business operations.',
-      details: ['Automated complex industrial workflows, bridging shop floor data with corporate resource planning.'],
-      iconUrl: '/icons/project-erp.svg',
-      iconColor: '#9b8dd6',
-      stack: ['.NET Core', 'React', 'Angular', 'Node.js', 'MSSQL', 'PostgreSQL']
     },
     {
       name: 'Smart Agriculture Solution',
@@ -143,6 +152,8 @@ export class ProjectsSectionComponent implements AfterViewInit, OnDestroy {
       ],
       iconUrl: '/icons/project-agri.svg',
       iconColor: '#2f9f63',
+      company: 'APRA Engineering',
+      period: '2018 — 2020',
       stack: ['.NET Core', 'React', 'PostgreSQL', 'WebSocket']
     }
   ];

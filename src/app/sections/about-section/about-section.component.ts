@@ -1,13 +1,6 @@
 import { Component } from '@angular/core';
 import { RevealDirective } from '../../shared/reveal.directive';
-
-interface AboutLink {
-  label: string;
-  href: string;
-  iconSlug: string;
-  iconUrl?: string;
-  external?: boolean;
-}
+import { PROFILE_LINKS, profileIconUrl } from '../../shared/profile-links';
 
 @Component({
   selector: 'app-about-section',
@@ -17,36 +10,10 @@ interface AboutLink {
   styleUrl: './about-section.component.scss'
 })
 export class AboutSectionComponent {
-  protected readonly profileImage = '/profile.png';
-  protected readonly links: AboutLink[] = [
-    { label: 'GitHub', href: 'https://github.com/akinsibay', iconSlug: 'github', external: true },
-    {
-      label: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/akinsibay/',
-      iconSlug: 'linkedin',
-      iconUrl: '/icons/linkedin.svg',
-      external: true
-    },
-    {
-      label: 'Mail',
-      href: 'mailto:sibayakin@gmail.com',
-      iconSlug: 'mail',
-      iconUrl: '/icons/mail.svg'
-    },
-    {
-      label: 'Download CV',
-      href: '/resume.html',
-      iconSlug: 'resume',
-      iconUrl: '/icons/resume.svg',
-      external: true
-    }
-  ];
+  protected readonly profileImage = '/profile.webp';
+  protected readonly links = PROFILE_LINKS;
 
   protected iconUrl(slug: string, fallbackUrl?: string): string {
-    if (fallbackUrl) {
-      return fallbackUrl;
-    }
-
-    return `https://cdn.simpleicons.org/${slug}/8bb8df`;
+    return profileIconUrl(slug, fallbackUrl);
   }
 }

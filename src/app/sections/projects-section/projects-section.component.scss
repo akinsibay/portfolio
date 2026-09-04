@@ -286,7 +286,7 @@
   flex-wrap: wrap;
   gap: 0.4rem;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.76rem;
   letter-spacing: 0.02em;
   color: var(--text-2);
 }
@@ -296,12 +296,10 @@
   font-weight: 600;
 }
 
+/* Supporting detail only: pinned to the far edge and a step quieter than the company. */
 .meta-period {
-  color: var(--text-3);
-}
-
-.meta-sep {
-  color: var(--border-glow);
+  margin-left: auto;
+  color: color-mix(in srgb, var(--text-3) 72%, transparent);
 }
 
 .live-dot {
@@ -478,14 +476,26 @@
 }
 
 @media (max-width: 760px) {
-  .project-track {
-    grid-auto-columns: 88%;
-    padding-inline: 0;
+  /* One card fills the viewport exactly, so a swipe never leaves a neighbour peeking. */
+  .track-viewport {
+    margin-inline: 0;
   }
 
+  .project-track {
+    grid-auto-columns: 100%;
+    padding-inline: 0;
+    scroll-padding-inline: 0;
+    overscroll-behavior-x: contain;
+  }
+
+  .project-card:hover {
+    transform: none;
+  }
+
+  /* With a full-width card the edge fades would sit on the card's own border and read as a cut-off. */
   .track-viewport::before,
   .track-viewport::after {
-    width: 1.5rem;
+    display: none;
   }
 
   .carousel-bar {

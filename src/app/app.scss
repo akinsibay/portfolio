@@ -78,7 +78,51 @@
   background: linear-gradient(90deg, transparent, var(--border-strong) 45%, var(--border-strong) 55%, transparent);
 }
 
-.site-footer p {
+.footer-prompt {
+  margin: 0 0 1rem;
+  color: var(--text-2);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.3rem;
+}
+
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  height: 2.2rem;
+  padding: 0 0.9rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface-2) 55%, transparent);
+  color: var(--text-1);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: border-color 200ms ease, color 200ms ease, transform 200ms var(--ease-out);
+}
+
+.footer-links a:hover,
+.footer-links a:focus-visible {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  color: var(--text-0);
+}
+
+.footer-links img {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+.footer-copy {
   margin: 0;
   color: var(--text-3);
   font-family: var(--font-mono);

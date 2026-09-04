@@ -15,5 +15,18 @@
 
 <footer class="site-footer">
   <span class="footer-line" aria-hidden="true"></span>
-  <p>© {{ currentYear }} - Developed By Akın Şibay - All rights reserved.</p>
+
+  <p class="footer-prompt">Feel free to reach out for opportunities and collaborations.</p>
+
+  <nav class="footer-links" aria-label="Contact links">
+    @for (link of contactLinks; track link.href) {
+    <a [href]="link.href" [attr.target]="link.external ? '_blank' : null"
+      [attr.rel]="link.external ? 'noreferrer' : null">
+      <img [src]="iconUrl(link.iconSlug, link.iconUrl)" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <span>{{ link.label }}</span>
+    </a>
+    }
+  </nav>
+
+  <p class="footer-copy">© {{ currentYear }} - Developed By Akın Şibay - All rights reserved.</p>
 </footer>

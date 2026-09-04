@@ -19,22 +19,10 @@ interface FocusItem {
 export class FocusSectionComponent {
   protected readonly items: FocusItem[] = [
     {
-      title: 'Scalable Backend Systems',
-      description: 'Designing and building backend services that scale reliably under increasing load.',
-      iconUrl: '/icons/focus-backend.svg',
-      accent: '#47c16d'
-    },
-    {
-      title: 'Distributed Architectures',
-      description: 'Working with microservices and event-driven systems to build resilient applications.',
+      title: 'Scalable Distributed Systems',
+      description: 'Designing microservices and event-driven systems that scale reliably under increasing load.',
       iconUrl: '/icons/focus-distributed.svg',
-      accent: '#7ea7f8'
-    },
-    {
-      title: 'Clean & Maintainable Code',
-      description: 'Writing code that is easy to understand, extend, and operate in production.',
-      iconUrl: '/icons/focus-clean-code.svg',
-      accent: '#7ecbba'
+      accent: '#47c16d'
     },
     {
       title: 'Product-Oriented Development',
