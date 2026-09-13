@@ -1,38 +1,41 @@
 :root {
   color-scheme: dark;
 
-  /* Surfaces — deep, cool, near-black */
-  --surface-0: #07090d;
-  --surface-1: #0c1015;
-  --surface-2: #11161d;
-  --surface-3: #171e27;
+  /* Surfaces — warm near-black, flat. No glows, no gradients. */
+  --bg: #151515;
+  --surface-1: #1c1c1b;
+  --surface-2: #20201f;
+  --surface-3: #262622;
+  --surface-hover: #2b2b28;
 
   /* Lines */
-  --border-soft: #1b232e;
-  --border-strong: #29343f;
-  --border-glow: #3a4a5c;
+  --line: rgba(255, 255, 255, 0.1);
+  --line-strong: rgba(255, 255, 255, 0.16);
+  --line-soft: rgba(255, 255, 255, 0.06);
 
   /* Type */
-  --text-0: #eef3f9;
-  --text-1: #c4d0dd;
-  --text-2: #93a2b3;
-  --text-3: #6a7788;
+  --text-0: #f0efec;
+  --text-1: #c3c2b7;
+  --text-2: #a5a49a;
+  --text-3: #8c8b82;
 
-  /* Accents */
-  --accent: #5aa9f8;
-  --accent-soft: #82b9e0;
-  --accent-deep: #2b6cb0;
-  --signal: #35d6a2;
+  /* One brand accent; --clay-deep is its pressed/hover state. */
+  --clay: #bc8a5f;
+  --clay-deep: #ad7d53;
 
-  --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
-  --font-body: 'Manrope', 'Segoe UI', sans-serif;
-  --font-mono: 'JetBrains Mono', 'SFMono-Regular', ui-monospace, monospace;
+  --font-serif: 'Source Serif 4', ui-serif, Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono', 'SF Mono', ui-monospace, Menlo, Consolas, monospace;
 
-  --radius-lg: 18px;
-  --radius-md: 12px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
 
-  --shadow-card: 0 18px 40px rgba(0, 0, 0, 0.45);
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --container: 1200px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --nav-height: 57px;
+
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
 }
 
 * {
@@ -41,94 +44,156 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5.5rem;
+  scroll-padding-top: calc(var(--nav-height) + 1rem);
+  background: var(--bg);
 }
 
 body {
   margin: 0;
-  background: var(--surface-0);
+  background: var(--bg);
   color: var(--text-0);
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
+  font-size: 16px;
   line-height: 1.6;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--accent) 32%, transparent);
+  background: color-mix(in srgb, var(--clay) 40%, transparent);
   color: var(--text-0);
+}
+
+img {
+  max-width: 100%;
+}
+
+/* ---------- Page frame ----------
+   A centered column; sections stack inside it and are separated by spacing alone. */
+
+.container {
+  width: min(var(--container), 100%);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
 }
 
 /* ---------- Section scaffolding ---------- */
 
 .section-frame {
   position: relative;
-  padding: clamp(3rem, 6vw, 5.5rem) 0 clamp(1.5rem, 3vw, 2.5rem);
-}
-
-/* Sections live inside sibling components, so the divider is matched from the shell. */
-main > *:not(:first-child) .section-frame::before {
-  content: '';
-  position: absolute;
-  inset-inline: 0;
-  top: 0;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    color-mix(in srgb, var(--border-strong) 85%, transparent) 20%,
-    color-mix(in srgb, var(--border-strong) 85%, transparent) 80%,
-    transparent
-  );
+  padding-block: clamp(1.75rem, 3vw, 2.5rem);
 }
 
 .section-head {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  margin-bottom: 0.35rem;
-}
-
-.section-index {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
-  color: color-mix(in srgb, var(--accent) 70%, var(--text-3));
-  padding: 0.18rem 0.5rem;
-  border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--border-soft));
-  border-radius: 6px;
-  background: color-mix(in srgb, var(--accent) 8%, transparent);
-  flex: 0 0 auto;
+  margin-bottom: 0.75rem;
 }
 
 .section-heading {
   margin: 0;
-  text-align: left;
-  font-size: clamp(1.45rem, 2.6vw, 1.95rem);
-  font-family: var(--font-display);
-  font-weight: 600;
-  letter-spacing: -0.025em;
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
   color: var(--text-0);
-  flex: 0 0 auto;
 }
 
 .section-rule {
-  flex: 1 1 auto;
-  height: 1px;
-  min-width: 1.5rem;
-  background: linear-gradient(90deg, color-mix(in srgb, var(--border-strong) 95%, transparent), transparent);
+  display: none;
 }
 
-/* ---------- Scroll reveal ---------- */
+.section-description {
+  margin: 0 0 clamp(1.25rem, 2.5vw, 1.75rem);
+  color: var(--text-1);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* ---------- Shared card ---------- */
+
+.card {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: background-color 180ms var(--ease-out), border-color 180ms var(--ease-out);
+}
+
+.card:hover {
+  background: var(--surface-3);
+  border-color: var(--line-strong);
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 2.5rem;
+  padding: 0 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  font-family: var(--font-sans);
+  font-size: 0.94rem;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out);
+}
+
+.btn img,
+.btn svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+  flex: 0 0 auto;
+}
+
+.btn-primary {
+  background: var(--clay);
+  color: #1a120e;
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background: var(--clay-deep);
+}
+
+.btn-secondary {
+  background: var(--surface-3);
+  color: var(--text-0);
+  border-color: var(--line-soft);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
+  background: var(--surface-hover);
+  border-color: var(--line);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-0);
+  border-color: var(--line-strong);
+}
+
+.btn-outline:hover,
+.btn-outline:focus-visible {
+  background: var(--surface-3);
+}
+
+/* ---------- Scroll reveal (kept subtle) ---------- */
 
 .reveal {
   opacity: 0;
-  transform: translateY(18px);
-  transition:
-    opacity 700ms var(--ease-out),
-    transform 700ms var(--ease-out);
+  transform: translateY(10px);
+  transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
   transition-delay: var(--reveal-delay, 0ms);
-  will-change: opacity, transform;
 }
 
 .reveal.is-visible {
@@ -159,16 +224,15 @@ main > *:not(:first-child) .section-frame::before {
 
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid color-mix(in srgb, var(--accent) 75%, white 25%);
-  outline-offset: 3px;
-  border-radius: 4px;
+  outline: 2px solid var(--clay);
+  outline-offset: 2px;
 }
 
 /* ---------- Scrollbar ---------- */
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--border-strong) transparent;
+  scrollbar-color: #3a3a37 transparent;
 }
 
 ::-webkit-scrollbar {
@@ -181,11 +245,12 @@ button:focus-visible {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border-strong);
+  background: #3a3a37;
   border-radius: 999px;
-  border: 3px solid var(--surface-0);
+  border: 3px solid var(--bg);
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: color-mix(in srgb, var(--accent) 45%, var(--border-strong));
+/* Light button on a dark page: the shared icon set is light, so flip it here. */
+.btn-primary img {
+  filter: brightness(0) saturate(100%) opacity(0.85);
 }

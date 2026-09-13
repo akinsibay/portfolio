@@ -1,98 +1,91 @@
 <section class="section-frame" id="projects" aria-labelledby="projects-title">
-  <div class="section-head" appReveal>
-    <span class="section-index" aria-hidden="true">01</span>
-    <h2 id="projects-title" class="section-heading">Featured Projects</h2>
-    <span class="section-rule" aria-hidden="true"></span>
-  </div>
-
-  <p class="section-description" appReveal="60">
-    Throughout my career, I’ve worked on a wide range of projects across both corporate environments and my own startup.
-    <br>
-    Here are some of the most notable ones.
-  </p>
-
-  <div class="carousel-bar" appReveal="100">
-    <div class="carousel-progress" aria-hidden="true">
-      <span [style.transform]="'scaleX(' + (0.14 + progress() * 0.86) + ')'"></span>
+  <div class="container">
+    <div class="section-head" appReveal>
+      <h2 id="projects-title" class="section-heading">Featured Projects</h2>
     </div>
 
-    <div class="controls" aria-label="Project carousel controls">
-      <button type="button" (click)="scroll('left')" [disabled]="atStart()" aria-label="Scroll projects left">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M15 5 8 12l7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-            stroke-linejoin="round" />
-        </svg>
-      </button>
-      <button type="button" (click)="scroll('right')" [disabled]="atEnd()" aria-label="Scroll projects right">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-            stroke-linejoin="round" />
-        </svg>
-      </button>
-    </div>
-  </div>
+    <p class="section-description" appReveal="60">
+      A selection of projects I’ve worked on across corporate environments and my own startup.
+    </p>
 
-  <div class="track-viewport" [class.at-start]="atStart()" [class.at-end]="atEnd()">
-    <div #track class="project-track" role="list" aria-label="Project cards">
+    <ol class="project-rows" aria-label="Project list">
       @for (project of projects; track project.name; let i = $index) {
-      <article class="project-card" role="listitem" appSpotlight [class.has-repo]="!!project.repoUrl"
-        [class.is-current]="!!project.current" [style.--icon-color]="project.iconColor">
-        <span class="card-index" aria-hidden="true">{{ cardIndex(i) }}</span>
-
-        <h3 class="project-heading">
-          <span class="project-icon-wrap" aria-hidden="true">
+      <li class="card project-row" [id]="'project-' + i" [appReveal]="40 + i * 40"
+        [class.is-current]="!!project.current" [class.is-open]="isExpanded(i)" [style.--icon-color]="project.iconColor">
+        <div class="row-lead" aria-hidden="true">
+          <span class="project-icon-wrap">
             <span class="project-icon" [style.--icon-url]="'url(' + project.iconUrl + ')'"></span>
           </span>
-          <span class="project-title">{{ project.name }}</span>
-        </h3>
+        </div>
 
-        @if (project.company) {
-        <p class="project-meta">
-          @if (project.current) {
-          <span class="live-dot" aria-hidden="true"></span>
+        <h3 class="project-title">{{ project.name }}</h3>
+
+        <div class="row-body">
+          @if (project.company) {
+          <p class="project-meta">
+            <span class="meta-company">{{ project.company }}</span>
+            @if (project.period) {
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <span class="meta-period">{{ project.period }}</span>
+            }
+            @if (project.current) {
+            <span class="live-badge"><span class="live-dot" aria-hidden="true"></span>Current</span>
+            }
+          </p>
           }
-          <span class="meta-company">{{ project.company }}</span>
-          @if (project.period) {
-          <span class="meta-period">{{ project.period }}</span>
+
+          @if (descriptionParts(project); as parts) {
+          <p class="project-description">{{ parts.before }}<a class="description-link" [href]="parts.url" target="_blank"
+              rel="noreferrer">{{ parts.label }}</a>{{ parts.after }}</p>
+          } @else {
+          <p class="project-description">{{ project.description }}</p>
           }
-        </p>
-        }
 
-        <div class="title-divider" aria-hidden="true"></div>
+          <div class="row-actions">
+            @if (project.details.length) {
+            <button class="details-toggle" type="button" (click)="toggleDetails(i)"
+              [attr.aria-expanded]="isExpanded(i)" [attr.aria-controls]="'project-details-' + i">
+              <span class="toggle-caret" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="m7 10 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </span>
+              <span>{{ isExpanded(i) ? 'Hide' : 'What I did' }}</span>
+              <span class="toggle-count">{{ project.details.length }}</span>
+            </button>
+            }
 
-        @if (descriptionParts(project); as parts) {
-        <p class="project-description">{{ parts.before }}<a class="description-link" [href]="parts.url" target="_blank"
-            rel="noreferrer">{{ parts.label }}</a>{{ parts.after }}</p>
-        } @else {
-        <p class="project-description">{{ project.description }}</p>
-        }
+            @if (project.repoUrl) {
+            <a class="repo-link" [href]="project.repoUrl" target="_blank" rel="noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 2a10 10 0 0 0-3.16 19.49c.5.1.68-.21.68-.48v-1.67c-2.77.6-3.35-1.17-3.35-1.17-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.61.07-.61 1 .07 1.52 1.03 1.52 1.03.89 1.52 2.33 1.08 2.9.83.09-.64.35-1.08.64-1.33-2.21-.25-4.53-1.11-4.53-4.95 0-1.09.39-1.98 1.03-2.67-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.53 9.53 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.69 1.03 1.58 1.03 2.67 0 3.85-2.32 4.7-4.53 4.95.36.31.68.92.68 1.86v2.76c0 .27.18.59.69.49A10 10 0 0 0 12 2Z" />
+              </svg>
+              <span>Repository</span>
+              <span class="repo-arrow" aria-hidden="true">→</span>
+            </a>
+            }
+          </div>
 
-        @if (project.details.length) {
-        <ul class="project-details">
-          @for (detail of project.details; track detail) {
-          <li>{{ detail }}</li>
+          @if (project.details.length) {
+          <ul class="project-details" [id]="'project-details-' + i" [hidden]="!isExpanded(i)">
+            @for (detail of project.details; track detail) {
+            <li>{{ detail }}</li>
+            }
+          </ul>
           }
-        </ul>
-        }
+        </div>
 
-        <p class="stack-title">Tech Stack</p>
-        <ul class="stack-list">
-          @for (item of project.stack; track item) {
-          <li [style.--chip-color]="techColor(item)">{{ item }}</li>
-          }
-        </ul>
-
-        @if (project.repoUrl) {
-        <a class="repo-stick" [href]="project.repoUrl" target="_blank" rel="noreferrer">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              d="M12 2a10 10 0 0 0-3.16 19.49c.5.1.68-.21.68-.48v-1.67c-2.77.6-3.35-1.17-3.35-1.17-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.61.07-.61 1 .07 1.52 1.03 1.52 1.03.89 1.52 2.33 1.08 2.9.83.09-.64.35-1.08.64-1.33-2.21-.25-4.53-1.11-4.53-4.95 0-1.09.39-1.98 1.03-2.67-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.53 9.53 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.69 1.03 1.58 1.03 2.67 0 3.85-2.32 4.7-4.53 4.95.36.31.68.92.68 1.86v2.76c0 .27.18.59.69.49A10 10 0 0 0 12 2Z" />
-          </svg>
-          <span>Go to Repository</span>
-        </a>
-        }
-      </article>
+        <div class="row-stack">
+          <ul class="stack-list" aria-label="Tech stack">
+            @for (item of project.stack; track item) {
+            <li [style.--chip-color]="techColor(item)"><span class="chip-dot" aria-hidden="true"></span>{{ item }}</li>
+            }
+          </ul>
+        </div>
+      </li>
       }
-    </div>
+    </ol>
   </div>
 </section>

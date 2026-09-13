@@ -1,5 +1,5 @@
-<header class="nav-wrap" [class.is-scrolled]="scrolled()" [class.is-cta-promoted]="ctaPromoted()">
-  <nav class="nav" aria-label="Primary">
+<header class="nav-wrap" [class.is-scrolled]="scrolled()">
+  <nav class="nav container" aria-label="Primary">
     <a class="brand" href="#about" aria-label="Back to top">
       <span class="brand-mark" aria-hidden="true">AŞ</span>
       <span class="brand-text">Akın Şibay</span>
@@ -7,15 +7,17 @@
 
     <ul class="nav-links">
       @for (link of navLinks; track link.href) {
-        <li>
+        <li [class.nav-cta]="link.isCta">
           <a
             [href]="link.href"
-            [class.cv-button]="link.isCta"
+            [class.btn]="link.isCta"
+            [class.btn-outline]="link.isCta"
+            [class.nav-link]="!link.isCta"
             [class.is-active]="!link.isCta && activeHref() === link.href"
             [attr.aria-current]="activeHref() === link.href ? 'true' : null"
             [attr.target]="link.external ? '_blank' : null"
             [attr.rel]="link.external ? 'noreferrer' : null">
-            <span class="nav-label">{{ link.label }}</span>
+            {{ link.label }}
           </a>
         </li>
       }

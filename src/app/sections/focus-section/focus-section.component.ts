@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { RevealDirective } from '../../shared/reveal.directive';
-import { SpotlightDirective } from '../../shared/spotlight.directive';
 
 interface FocusItem {
   title: string;
@@ -12,7 +11,7 @@ interface FocusItem {
 @Component({
   selector: 'app-focus-section',
   standalone: true,
-  imports: [RevealDirective, SpotlightDirective],
+  imports: [RevealDirective],
   templateUrl: './focus-section.component.html',
   styleUrl: './focus-section.component.scss'
 })
@@ -43,8 +42,4 @@ export class FocusSectionComponent {
       accent: '#74bde9'
     }
   ];
-
-  protected indexLabel(index: number): string {
-    return String(index + 1).padStart(2, '0');
-  }
 }

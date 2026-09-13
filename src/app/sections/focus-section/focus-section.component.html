@@ -1,27 +1,28 @@
 <section class="section-frame focus-section" id="focus" aria-labelledby="focus-title">
-  <div class="section-head" appReveal>
-    <span class="section-index" aria-hidden="true">02</span>
-    <h2 id="focus-title" class="section-heading">What I Focus On</h2>
-    <span class="section-rule" aria-hidden="true"></span>
-  </div>
+  <div class="container">
+    <div class="section-head" appReveal>
+      <h2 id="focus-title" class="section-heading">What I Focus On</h2>
+    </div>
 
-  <p class="focus-description" appReveal="60">
-    Core engineering priorities I apply while building production-ready software systems.
-  </p>
+    <p class="section-description focus-description" appReveal="60">
+      Core engineering principles I follow when building reliable, production-ready software systems.
+    </p>
 
-  <div class="focus-grid" role="list" aria-label="Focus areas">
-    @for (item of items; track item.title; let i = $index) {
-    <article class="focus-card" role="listitem" appSpotlight [appReveal]="60 + i * 55" [style.--card-accent]="item.accent">
-      <div class="focus-top">
-        <div class="focus-icon-wrap">
-          <img [src]="item.iconUrl" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+    <div class="focus-grid" role="list" aria-label="Focus areas">
+      @for (item of items; track item.title; let i = $index) {
+      <article class="card focus-card" role="listitem" [appReveal]="40 + i * 50" [style.--card-accent]="item.accent">
+        <div class="focus-cover" aria-hidden="true">
+          <span class="focus-icon-wrap">
+            <span class="focus-icon" [style.--icon-url]="'url(' + item.iconUrl + ')'"></span>
+          </span>
         </div>
-        <span class="focus-index" aria-hidden="true">{{ indexLabel(i) }}</span>
-      </div>
 
-      <h3>{{ item.title }}</h3>
-      <p>{{ item.description }}</p>
-    </article>
-    }
+        <div class="focus-body">
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+        </div>
+      </article>
+      }
+    </div>
   </div>
 </section>

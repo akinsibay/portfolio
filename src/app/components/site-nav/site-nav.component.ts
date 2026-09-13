@@ -1,4 +1,4 @@
-import { afterNextRender, Component, NgZone, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, NgZone, OnDestroy, OnInit, signal } from '@angular/core';
 
 interface NavLink {
   label: string;
@@ -26,18 +26,11 @@ export class SiteNavComponent implements OnInit, OnDestroy {
   protected readonly scrolled = signal(false);
   protected readonly progress = signal(0);
 
-  /* The hero carries its own CV pill, so the nav one stays quiet until that pill leaves the viewport. */
-  protected readonly ctaPromoted = signal(false);
-
   private observer: IntersectionObserver | null = null;
-  private heroCtaObserver: IntersectionObserver | null = null;
   private removeScrollListener: (() => void) | null = null;
   private rafId: number | null = null;
 
-  constructor(private readonly ngZone: NgZone) {
-    // The hero pill is rendered by a sibling component, so wait for the first full render to find it.
-    afterNextRender(() => this.observeHeroCta());
-  }
+  constructor(private readonly ngZone: NgZone) {}
 
   ngOnInit(): void {
     this.observeSections();
@@ -47,8 +40,6 @@ export class SiteNavComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.observer?.disconnect();
     this.observer = null;
-    this.heroCtaObserver?.disconnect();
-    this.heroCtaObserver = null;
     this.removeScrollListener?.();
     this.removeScrollListener = null;
 
@@ -86,25 +77,6 @@ export class SiteNavComponent implements OnInit, OnDestroy {
     });
   }
 
-  private observeHeroCta(): void {
-    const heroCta = document.querySelector('.about-links .resume-pill');
-    if (!heroCta || typeof IntersectionObserver === 'undefined') {
-      // Without a hero pill to defer to, this stays the one CV call to action.
-      this.ctaPromoted.set(true);
-      return;
-    }
-
-    this.ngZone.runOutsideAngular(() => {
-      this.heroCtaObserver = new IntersectionObserver(
-        ([entry]) => this.ngZone.run(() => this.ctaPromoted.set(!entry.isIntersecting)),
-        // Offset by the sticky nav height so the pill counts as gone once it slides behind the bar.
-        { rootMargin: '-66px 0px 0px 0px', threshold: 0 }
-      );
-
-      this.heroCtaObserver.observe(heroCta);
-    });
-  }
-
   private trackScroll(): void {
     this.ngZone.runOutsideAngular(() => {
       const onScroll = (): void => {
@@ -118,7 +90,7 @@ export class SiteNavComponent implements OnInit, OnDestroy {
           const ratio = scrollable > 0 ? Math.min(scrollTop / scrollable, 1) : 0;
 
           this.ngZone.run(() => {
-            this.scrolled.set(scrollTop > 12);
+            this.scrolled.set(scrollTop > 8);
             this.progress.set(ratio);
           });
 

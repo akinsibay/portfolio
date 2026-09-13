@@ -1,12 +1,6 @@
 <app-site-nav />
 
 <main class="page-shell" aria-label="Portfolio content">
-  <div class="backdrop-layer" aria-hidden="true">
-    <div class="backdrop-grid"></div>
-    <div class="backdrop-glow"></div>
-    <div class="backdrop-pointer"></div>
-  </div>
-
   <app-about-section />
   <app-projects-section />
   <app-focus-section />
@@ -14,19 +8,25 @@
 </main>
 
 <footer class="site-footer">
-  <span class="footer-line" aria-hidden="true"></span>
+  <div class="footer-cta">
+    <div class="container footer-cta-inner">
+      <p class="footer-prompt">Feel free to reach out for opportunities and collaborations.</p>
 
-  <p class="footer-prompt">Feel free to reach out for opportunities and collaborations.</p>
+      <nav class="footer-links" aria-label="Contact links">
+        @for (link of contactLinks; track link.href) {
+        <a class="btn btn-secondary" [href]="link.href" [attr.target]="link.external ? '_blank' : null"
+          [attr.rel]="link.external ? 'noreferrer' : null">
+          <img [src]="iconUrl(link.iconSlug, link.iconUrl)" alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <span>{{ link.label }}</span>
+        </a>
+        }
+      </nav>
+    </div>
+  </div>
 
-  <nav class="footer-links" aria-label="Contact links">
-    @for (link of contactLinks; track link.href) {
-    <a [href]="link.href" [attr.target]="link.external ? '_blank' : null"
-      [attr.rel]="link.external ? 'noreferrer' : null">
-      <img [src]="iconUrl(link.iconSlug, link.iconUrl)" alt="" aria-hidden="true" loading="lazy" decoding="async">
-      <span>{{ link.label }}</span>
-    </a>
-    }
-  </nav>
-
-  <p class="footer-copy">© {{ currentYear }} - Developed By Akın Şibay - All rights reserved.</p>
+  <div class="footer-bar">
+    <div class="container">
+      <p class="footer-copy">© {{ currentYear }} - Developed By Akın Şibay - All rights reserved.</p>
+    </div>
+  </div>
 </footer>

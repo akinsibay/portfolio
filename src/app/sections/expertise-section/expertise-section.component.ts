@@ -59,7 +59,9 @@ export class ExpertiseSectionComponent {
       accent: '#0078d7',
       iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuredevops/azuredevops-original.svg'
     },
-    { name: 'GitHub Actions', iconSlug: 'githubactions', group: 'DevOps', accent: '#2088ff' }
+    { name: 'GitHub Actions', iconSlug: 'githubactions', group: 'DevOps', accent: '#2088ff' },
+    { name: 'Elasticsearch', iconSlug: 'elasticsearch', group: 'DevOps', accent: '#00bfb3' },
+    { name: 'Kibana', iconSlug: 'kibana', group: 'DevOps', accent: '#f04e98' }
   ];
 
   protected readonly groupOrder: string[] = [

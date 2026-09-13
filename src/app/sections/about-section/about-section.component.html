@@ -1,48 +1,45 @@
-<section class="section-frame about" id="about" aria-label="About">
+<section class="about" id="about" aria-label="About">
+  <div class="hero">
+    <div class="container hero-inner">
+      <div class="hero-intro" appReveal>
+        <h1 class="hero-name">Akın Şibay</h1>
 
-  <div class="about-hero">
-    <div class="about-intro" appReveal>
-      <h1 class="about-name">Akın Şibay</h1>
+        <p class="hero-role">
+          <span class="role-rule" aria-hidden="true"></span>
+          Senior Software Engineer
+        </p>
 
-      <p class="about-role">
-        <span class="role-rule" aria-hidden="true"></span>
-        Full Stack Software Engineer
+        <nav class="hero-links" aria-label="Profile links">
+          @for (link of links; track link.href) {
+          <a class="btn" [class.btn-primary]="link.label === 'Download CV'" [class.btn-secondary]="link.label !== 'Download CV'"
+            [class.resume-pill]="link.label === 'Download CV'" [href]="link.href"
+            [attr.target]="link.external ? '_blank' : null" [attr.rel]="link.external ? 'noreferrer' : null"
+            [attr.aria-label]="link.label">
+            <img [src]="iconUrl(link.iconSlug, link.iconUrl)" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <span>{{ link.label }}</span>
+          </a>
+          }
+        </nav>
+      </div>
+
+      <div class="hero-portrait" appReveal="80">
+        <img class="hero-photo" [src]="profileImage" alt="Akın Şibay portrait" fetchpriority="high" decoding="async">
+      </div>
+    </div>
+
+    <div class="container about-copy" appReveal="60">
+      <p class="about-body about-body-primary">
+        Hi, I'm <span class="name-highlight">Akın Şibay</span>. I'm a Senior Software Engineer experienced in designing
+        and developing distributed systems and microservices-based applications using modern
+        <span class="tech-dotnet">.NET</span> and
+        <span class="tech-javascript">JavaScript</span> technologies. I focus on software architecture, code quality,
+        long-term maintainability, and delivering complete features across backend and frontend.
       </p>
-
-      <nav class="about-links" aria-label="Profile links">
-        @for (link of links; track link.href) {
-        <a [href]="link.href" [attr.target]="link.external ? '_blank' : null"
-          [attr.rel]="link.external ? 'noreferrer' : null" [class.resume-pill]="link.label === 'Download CV'"
-          [attr.aria-label]="link.label">
-          <img [src]="iconUrl(link.iconSlug, link.iconUrl)" alt="" aria-hidden="true" loading="lazy" decoding="async">
-          <span>{{ link.label }}</span>
-        </a>
-        }
-      </nav>
+      <p class="about-body">
+        I enjoy turning product needs into reliable technical solutions and building software that stays easy to
+        operate as products grow. I value teamwork, knowledge sharing, continuous learning, and helping teams build
+        better software together.
+      </p>
     </div>
-
-    <div class="about-portrait" appReveal="120">
-      <span class="portrait-ring" aria-hidden="true"></span>
-      <span class="portrait-arc" aria-hidden="true"></span>
-      <img class="about-photo" [src]="profileImage" alt="Akın Şibay portrait" fetchpriority="high"
-        decoding="async">
-    </div>
-  </div>
-
-  <div class="about-copy" appReveal="80">
-    <span class="copy-rail" aria-hidden="true"></span>
-
-    <p class="about-body about-body-primary">
-      Hi, I'm <span class="name-highlight">Akın Şibay</span>. Senior Software Engineer experienced in designing and
-      developing distributed, microservices-based applications using modern
-      <span class="tech-dotnet">.NET</span> and
-      <span class="tech-javascript">JavaScript</span> technologies. Product-oriented, with a strong focus on software
-      architecture, code quality, and long-term maintainability, and solid experience in frontend development.
-    </p>
-    <p class="about-body">
-      I enjoy translating product needs into robust technical solutions and shipping features that stay easy to
-      operate as products grow. Passionate about teamwork, knowledge sharing, continuous learning, and helping teams
-      build better software together.
-    </p>
   </div>
 </section>

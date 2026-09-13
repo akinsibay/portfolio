@@ -39,5 +39,5 @@ export function profileIconUrl(slug: string, fallbackUrl?: string): string {
     return fallbackUrl;
   }
 
-  return `https://cdn.simpleicons.org/${slug}/8bb8df`;
+  return `https://cdn.simpleicons.org/${slug}/f0efec`;
 }

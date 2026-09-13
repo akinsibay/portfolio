@@ -1,35 +1,34 @@
 <section class="section-frame" id="expertise" aria-labelledby="expertise-title">
-  <div class="section-head" appReveal>
-    <span class="section-index" aria-hidden="true">03</span>
-    <h2 id="expertise-title" class="section-heading">Technologies</h2>
-    <span class="section-rule" aria-hidden="true"></span>
-  </div>
+  <div class="container">
+    <div class="section-head" appReveal>
+      <h2 id="expertise-title" class="section-heading">Technologies</h2>
+    </div>
 
-  <p class="section-description" appReveal="60">
-    Technologies I’ve used extensively over the years and applied consistently across real-world projects.
-  </p>
+    <p class="section-description" appReveal="60">
+      Technologies I’ve used extensively to build and maintain production software.
+    </p>
 
-  <div class="category-list">
-    @for (group of groupedCards(); track group.title; let g = $index) {
-    <section class="category-block" [attr.aria-label]="group.title + ' technologies'" [appReveal]="60 + g * 70">
-      <div class="category-head">
-        <h3 class="category-title">{{ group.title }}</h3>
-        <span class="category-rule" aria-hidden="true"></span>
-        <span class="category-count" aria-hidden="true">{{ group.cards.length }}</span>
-      </div>
+    <div class="category-list">
+      @for (group of groupedCards(); track group.title; let g = $index) {
+      <section class="category-block" [attr.aria-label]="group.title + ' technologies'" [appReveal]="40 + g * 60">
+        <div class="category-head">
+          <h3 class="category-title">{{ group.title }}</h3>
+          <span class="category-count" aria-hidden="true">{{ group.cards.length }}</span>
+        </div>
 
-      <div class="tech-grid" role="list">
-        @for (card of group.cards; track trackByName($index, card)) {
-        <article class="tech-card" role="listitem" [style.--tech-accent]="card.accent">
-          <div class="icon-wrap">
-            <img [src]="iconUrl(card.iconSlug, card.accent, card.iconUrl)" alt="" aria-hidden="true" loading="lazy"
-              decoding="async">
-          </div>
-          <h4>{{ card.name }}</h4>
-        </article>
-        }
-      </div>
-    </section>
-    }
+        <div class="tech-grid" role="list">
+          @for (card of group.cards; track trackByName($index, card)) {
+          <article class="tech-card" role="listitem" [style.--tech-accent]="card.accent">
+            <div class="icon-wrap">
+              <img [src]="iconUrl(card.iconSlug, card.accent, card.iconUrl)" alt="" aria-hidden="true" loading="lazy"
+                decoding="async">
+            </div>
+            <h4>{{ card.name }}</h4>
+          </article>
+          }
+        </div>
+      </section>
+      }
+    </div>
   </div>
 </section>
